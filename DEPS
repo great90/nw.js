@@ -39,7 +39,7 @@ gclient_gn_args = [
 
 
 vars = {
-  "buildspec_platforms": "linux64, mac64, win, win64, android, ios, chromeos",
+  "buildspec_platforms": "linux64, mac64, win, win64, android",
   # Variable that can be used to support multiple build scenarios, like having
   # Chromium specific targets in a client project's GN file or sync dependencies
   # conditionally etc.
@@ -134,9 +134,9 @@ vars = {
   # (ie: release) images.
   'use_public_cros_config': 'not checkout_src_internal',
 
-  'nw_src_revision': '27670a1abecfb8c11a23d1658ecd87a7e555e1cf',
-  'nw_v8_revision': 'ebac9cc6e42c2fcc5b6a3e6dd9ff875f2ae0cdcb',
-  'nw_node_revision': 'b8d4b9b9f436e579f9ab2f2dc2a7c0af58de05b4',
+  'nw_src_revision': '29c3158c51bd9f3444239fcc9b9514b9ca9c2122',
+  'nw_v8_revision': '910710981248526a02656d33d3bbe8dc72538cd2',
+  'nw_node_revision': '4e7af7f40f864a84bc4f822b84a1b84f35326495',
 
   # ANGLE's deps are relative to the angle_root variable.
   'angle_root': 'src/third_party/angle',
@@ -168,11 +168,11 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling Skia
   # and whatever else without interference from each other.
-  'skia_revision': 'bc8994cb7f7fe93d758211a65c9b987210f83262',
+  'skia_revision': 'dba5c993df3fb95fed01f8131aa0401e83c9198f',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling V8
   # and whatever else without interference from each other.
-  'v8_revision': '46a7ef3726d1cd4d5d34e2c9de7f1a9fd276ad21',
+  'v8_revision': 'cd37166d46d32e849b94a656102bf47e5fdca7cf',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling swarming_client
   # and whatever else without interference from each other.
@@ -180,7 +180,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling ANGLE
   # and whatever else without interference from each other.
-  'angle_revision': '66e0feec40dcd82459234eb249fef11aa3f2a917',
+  'angle_revision': '0cc6d390272a3ec18d89400ed28e1bfa2be56fcf',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling SwiftShader
   # and whatever else without interference from each other.
@@ -188,7 +188,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling PDFium
   # and whatever else without interference from each other.
-  'pdfium_revision': 'b93ec9bf15bbab33c46f7c1296f11965dbb15836',
+  'pdfium_revision': '61d5b39075761403ae37242780f0365136deef4d',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling BoringSSL
   # and whatever else without interference from each other.
@@ -247,7 +247,7 @@ vars = {
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling feed
   # and whatever else without interference from each other.
-  'feed_revision': '760bb171ed66f8385aa3720d90ca532ae51354cc',
+  'feed_revision': '71971dd78aaf118efaf8047d85528377950a4061',
   # Three lines of non-changing comments so that
   # the commit queue can handle CLs rolling android_sdk_build-tools_version
   # and whatever else without interference from each other.
@@ -1423,7 +1423,7 @@ deps = {
     Var('chromium_git') + '/external/khronosgroup/webgl.git' + '@' + 'abaae129d9a0c6e1e092067e0b105475df43352e',
 
   'src/third_party/webrtc':
-    Var('webrtc_git') + '/src.git' + '@' + '3498a292ecfae6d0abaaa3d078670184710ce65b',
+    Var('webrtc_git') + '/src.git' + '@' + '0b2302e5e0418b6716fbc0b3927874fd3a842caf',
 
   'src/third_party/xdg-utils': {
       'url': Var('chromium_git') + '/chromium/deps/xdg-utils.git' + '@' + 'd80274d5869b17b8c9067a1022e4416ee7ed5e0d',
@@ -1470,7 +1470,7 @@ deps = {
   #  Var('chromium_git') + '/v8/v8.git' + '@' +  Var('v8_revision'),
 
   'src-internal': {
-    'url': 'https://chrome-internal.googlesource.com/chrome/src-internal.git@ee44ffba8ca2d316a1d613113aa85bc809d669c7',
+    'url': 'https://chrome-internal.googlesource.com/chrome/src-internal.git@7ea7b65154ed84d96518ea94ee550db9f0612829',
     'condition': 'checkout_src_internal',
   },
 

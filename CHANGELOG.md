@@ -1,3 +1,64 @@
+0.42.6 / 11-30-2019
+===================
+- Improve kiosk mode in OSX by setting app presentation options. Thanks to Russell Valentine. [(#7201)](https://github.com/nwjs/nw.js/issues/7201)
+- Disable Chromium upgrade detector and bubble [(#7241)](https://github.com/nwjs/nw.js/issues/7241)
+- nw2: add nw.Window.getAll [(#7227)](https://github.com/nwjs/nw.js/issues/7227)
+- nw2: window size limit in package.json don't work in some cases [(#7248)](https://github.com/nwjs/nw.js/issues/7248)
+- nw2: taskbar icon on Windows for NW.js is a red square, can't set icon in package.json [(#7236)](https://github.com/nwjs/nw.js/issues/7236)
+- nw2: crash on setting kiosk mode
+- nw2: Fix Win.setAlwaysOnTop [(#7233)](https://github.com/nwjs/nw.js/issues/7233)
+- nw2: fix crash on Window.setShadow() [(#7232)](https://github.com/nwjs/nw.js/issues/7232)
+- nw2: Fix fullscreen by manifest [(#7225)](https://github.com/nwjs/nw.js/issues/7225)
+- nw2: Fix 'About' menu in macOS [(#7219)](https://github.com/nwjs/nw.js/issues/7219)
+- Fix: nwjs app won't quit after devtool is opened. Thanks to Jefry Tedjokusumo [(#7226)](https://github.com/nwjs/nw.js/issues/7226)
+- Fix: transparency click-through regression in macOS. Thanks to Jefry Tedjokusumo [(#7204)](https://github.com/nwjs/nw.js/issues/7204)
+- [docs] add nw.Window.getAll()
+
+0.42.5 / 11-19-2019
+===================
+- Update Chromium to [78.0.3904.108](https://chromereleases.googleblog.com/2019/11/stable-channel-update-for-desktop_18.html)
+- nw2: clear MacOS menu [(#7219)](https://github.com/nwjs/nw.js/issues/7219)
+- nw2: nw2: support fullscreen in new-win-policy [(#7209)](https://github.com/nwjs/nw.js/issues/7209)
+- nw2: fix new-win-policy ctrl-click and frameless [(#7209)](https://github.com/nwjs/nw.js/issues/7209)
+- nw2: Fix windows maximum size
+- nw2: use innerHeight and Width for Window.resizeTo
+- nw2: Fix window center position, updating dimension, mac max size
+- Fix: crash after loading compiled JS [(#7126)](https://github.com/nwjs/nw.js/issues/7126)
+- Fix: additional-trust-anchors regression
+- [docs] clarify the inner vs outter dimension in various places
+
+0.42.4 / 11-13-2019
+===================
+- NW2 becomes the default mode [(#5875)](https://github.com/nwjs/nw.js/issues/5875)
+- nw2: Fix window icon and dimension
+- Fix: cross domain access from Node frame [(#7173)](https://github.com/nwjs/nw.js/issues/7173)
+- Fix: crash on terminate web worker in iframe with enable node worker [(#7196)](https://github.com/nwjs/nw.js/issues/7196)
+
+0.42.3 / 11-08-2019
+===================
+- Update Chromium to [78.0.3904.97](https://chromereleases.googleblog.com/2019/11/stable-channel-update-for-desktop.html)
+- Update Node.js to [v13.1.0](https://nodejs.org/en/blog/release/v13.1.0/)
+- Fix: Failed to load resource: net::ERR_BLOCKED_BY_CLIENT [(#7197)](https://github.com/nwjs/nw.js/issues/7197)
+- Fix: nw2: Window.close() function
+- nw2: change default window size
+
+0.42.2 / 11-01-2019
+===================
+- Update Chromium to [78.0.3904.87](https://chromereleases.googleblog.com/2019/10/stable-channel-update-for-desktop_31.html)
+- Fix: downlod in iframe can only fire once [(#7193)](https://github.com/nwjs/nw.js/issues/7193)
+
+0.42.1 / 10-30-2019
+===================
+- Update Node.js to [v13.0.1](https://nodejs.org/en/blog/release/v13.0.1/)
+- Fix: nw.App.clearCache is blocked for seconds during startup [(#7192)](https://github.com/nwjs/nw.js/issues/7192)
+- Fix: crash when download in iframe [(#7187)](https://github.com/nwjs/nw.js/issues/7187)
+- Fix: crash on terminate web worker with enable node worker [(#7188)](https://github.com/nwjs/nw.js/issues/7188)
+- Fix: nw.Window.close event does not have "quit" on macOS when closed by Cmd-Q [(#7191)](https://github.com/nwjs/nw.js/issues/7191)
+
+0.42.0 / 10-23-2019
+===================
+- Update Chromium to [78.0.3904.70](https://chromereleases.googleblog.com/2019/10/stable-channel-update-for-desktop_22.html)
+
 0.41.3 / 10-15-2019
 ===================
 - Update Chromium to [77.0.3865.120](https://chromereleases.googleblog.com/2019/10/stable-channel-update-for-desktop.html)

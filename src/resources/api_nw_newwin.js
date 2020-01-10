@@ -309,7 +309,19 @@ NWWindow.prototype.removeAllListeners = function (event) {
 };
 
 NWWindow.prototype.setShadow = function(shadow) {
-  currentNWWindowInternal.setShadow(shadow);
+  currentNWWindowInternal.setShadowInternal(shadow, this.cWindow.id);
+};
+
+NWWindow.prototype.enterKioskMode = function() {
+  currentNWWindowInternal.enterKioskModeInternal(this.cWindow.id);
+};
+
+NWWindow.prototype.leaveKioskMode = function() {
+  currentNWWindowInternal.leaveKioskModeInternal(this.cWindow.id);
+};
+
+NWWindow.prototype.toggleKioskMode = function() {
+  currentNWWindowInternal.toggleKioskModeInternal(this.cWindow.id);
 };
 
 NWWindow.prototype.showDevTools = function(frm, callback) {
@@ -450,7 +462,7 @@ NWWindow.prototype.setMinimumSize = function (width, height) {
   chrome.windows.update(this.cWindow.id, {'minWidth': width, 'minHeight': height});
 };
 NWWindow.prototype.resizeTo = function (width, height) {
-  chrome.windows.update(this.cWindow.id, {'width': width, 'height': height});
+  chrome.windows.update(this.cWindow.id, {'innerWidth': width, 'innerHeight': height});
 };
 NWWindow.prototype.resizeBy = function (width, height) {
   this.cWindow = currentNWWindowInternal.getCurrent(this.cWindow.id, {'populate': true});
@@ -547,13 +559,13 @@ Object.defineProperty(NWWindow.prototype, 'isTransparent', {
 });
 Object.defineProperty(NWWindow.prototype, 'isKioskMode', {
   get: function() {
-    return currentNWWindowInternal.isKioskInternal();
+    return currentNWWindowInternal.isKioskInternal(this.cWindow.id);
   },
   set: function(val) {
     if (val)
-      currentNWWindowInternal.enterKioskMode();
+      currentNWWindowInternal.enterKioskModeInternal(this.cWindow.id);
     else
-      currentNWWindowInternal.leaveKioskMode();
+      currentNWWindowInternal.leaveKioskModeInternal(this.cWindow.id);
   }
 });
 Object.defineProperty(NWWindow.prototype, 'isFullscreen', {
@@ -611,7 +623,7 @@ apiBridge.registerCustomHook(function(bindingsAPI) {
   var apiFunctions = bindingsAPI.apiFunctions;
   currentNWWindowInternal = getInternalApi('nw.currentWindowInternal');
   forEach(currentNWWindowInternal, function(key, value) {
-    if (!key.endsWith('Internal'))
+    if (!key.endsWith('Internal') && key !== 'close')
       NWWindow.prototype[key] = value;
   });
   apiFunctions.setHandleRequest('get', function(domWindow) {
@@ -622,6 +634,13 @@ apiBridge.registerCustomHook(function(bindingsAPI) {
 
     currentNWWindow = new NWWindow;
     return currentNWWindow;
+  });
+
+  apiFunctions.setHandleRequest('getAll', function(callback) {
+    chrome.windows.getAll({populate: true}, function (cwindows) {
+      let create_nw_win = cwin => new NWWindow(cwin);
+      callback(cwindows.map(create_nw_win));
+    });
   });
 
   apiFunctions.setHandleRequest('open', function(url, params, callback) {
@@ -723,6 +742,8 @@ function onLoadingStateChanged(status) {
 }
 
 function onDocumentStartEnd(start, frame, top_routing_id) {
+  if (!currentNWWindow)
+    return;
   if (start) {
     dispatchEventIfExists(currentNWWindow, "onDocumentStart", [frame, top_routing_id]);
   }

@@ -62,6 +62,9 @@ nw.Window.open('https://github.com/nwjs/nw.js', {}, function(new_win) {
   // do something with the newly created window
 });
 ```
+## Window.getAll(callback)
+
+Get all windows with a callback function whose parameter is an array of nw.Window object. This function is supported since 0.42.6.
 
 ## Window.open(url, [options], [callback])
 
@@ -91,12 +94,12 @@ Get the corresponding DOM window object of the native window.
 ## win.x
 ## win.y
 
-Get or set left/top offset from window to screen.
+Get or set left/top offset from window frame to screen.
 
 ## win.width
 ## win.height
 
-Get or set window's size.
+Get or set window's size, including the window's frame.
 
 ## win.title
 
@@ -150,8 +153,8 @@ Moves a window a specified number of pixels relative to its current coordinates.
 
 ## win.resizeTo(width, height)
 
-* `width` `{Integer}` the width of the window
-* `height` `{Integer}` the height of the window
+* `width` `{Integer}` the inner width of the window
+* `height` `{Integer}` the inner height of the window
 
 Resizes a window to the specified `width` and `height`.
 
